@@ -115,39 +115,25 @@ gallery.on('show.simplelightbox', function () {
       setTimeout(() => {
         let modalContent = document.querySelector('.sl-image');
         if (modalContent) {
-          let paragraph = document.querySelector('.modal-header');
-          if (!paragraph) {
-            paragraph = document.createElement('p');
-            paragraph.classList.add('modal-header');
-            paragraph.textContent =
-              gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
-            modalContent.appendChild(paragraph);
-          } else {
-            paragraph.textContent =
-              gallery.elements[gallery.currentImageIndex].childNodes[0].alt;
-          }
+          const paragraph = document.createElement('p');
+          paragraph.classList.add('modal-header');
+          paragraph.textContent =
+            gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
+          modalContent.appendChild(paragraph);
         }
       }, 250);
     }
   }, interval);
 });
 
-// gallery.on('changed.simplelightbox', function () {
-//   const currentImg = gallery.currentImage;
-
-//   if (currentImg) {
-//     currentImg.addEventListener('load', function () {
-//       const paragraph = document.querySelector('.modal-header');
-
-//       paragraph.textContent =
-//         gallery.elements[gallery.currentImageIndex].childNodes[0].alt;
-//     });
-
-//     currentImg.addEventListener('error', function () {
-//       console.error('Помилка завантаження зображенняБ оновіть сторінку!');
-//     });
-//   }
-// });
+gallery.on('changed.simplelightbox', function () {
+  const currentImg = gallery.currentImage;
+  if (currentImg) {
+    const paragraph = document.querySelector('.modal-header');
+    paragraph.textContent =
+      gallery.elements[gallery.currentImageIndex].childNodes[0].alt;
+  }
+});
 
 gallery.on('error.simplelightbox', function (e) {
   console.log(e);
