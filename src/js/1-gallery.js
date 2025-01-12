@@ -112,26 +112,43 @@ gallery.on('show.simplelightbox', function () {
     const currentImg = gallery.currentImage;
 
     if (currentImg) {
-      setTimeout(() => {
-        let modalContent = document.querySelector('.sl-image');
-        if (modalContent) {
-          const paragraph = document.createElement('p');
-          paragraph.classList.add('modal-header');
-          paragraph.textContent =
-            gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
-          modalContent.appendChild(paragraph);
-        }
-      }, 250);
+      let modalContent = document.querySelector('.sl-image');
+      if (modalContent) {
+        const paragraph = document.createElement('p');
+        paragraph.classList.add('modal-header');
+        paragraph.textContent =
+          gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
+        modalContent.appendChild(paragraph);
+        const checkImgOpasity = setInterval(() => {
+          if (currentImg.style.opacity === '1') {
+            clearInterval(checkImgOpasity);
+            setTimeout(() => {
+              paragraph.style.opacity = 1;
+            }, 250);
+          }
+        }, 10);
+      }
     }
   }, interval);
 });
 
 gallery.on('changed.simplelightbox', function () {
+  const imgFrame = document.querySelector('.sl-image');
   const currentImg = gallery.currentImage;
   if (currentImg) {
     const paragraph = document.querySelector('.modal-header');
+    paragraph.style.opacity = 0;
+
     paragraph.textContent =
       gallery.elements[gallery.currentImageIndex].childNodes[0].alt;
+    const checkImgOpasity = setInterval(() => {
+      if (imgFrame && imgFrame.style.opacity === '1') {
+        clearInterval(checkImgOpasity);
+        setTimeout(() => {
+          paragraph.style.opacity = 1;
+        }, 250);
+      }
+    }, 10);
   }
 });
 
