@@ -28,6 +28,10 @@ h1 {
   transform: translateX(-50%);
 }
 
+.index h1 {
+  padding: 20px 0;
+}
+
 .index {
   background-color: goldenrod;
   color: brown;
