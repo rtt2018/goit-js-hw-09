@@ -1,0 +1,35 @@
+.image-container {
+  display: flex;
+  gap: 240px;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 0;
+  width: 700px;
+  height: 500px;
+  background-image: url('../img/Red_and_blue_pill.jpg');
+  background-size: 700px 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-container a {
+  font-size: 28px;
+  color: beige;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 32px;
+  display: inline-block;
+  max-width: 1120px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 20px 0;
+}
+
+.index {
+  background-color: goldenrod;
+  color: brown;
+}
