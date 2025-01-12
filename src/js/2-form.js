@@ -1,3 +1,4 @@
+//---------------------Глобальні змінні-----------------------------
 let formData = { email: '', message: '' };
 
 const key = 'feedback-form-state';
@@ -5,6 +6,8 @@ const key = 'feedback-form-state';
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const getForm = document.querySelector('.feedback-form');
+
+//------------------------Слухаємо input------------------------
 
 getForm.addEventListener('input', saveAndrestoreData);
 
