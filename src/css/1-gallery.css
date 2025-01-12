@@ -63,4 +63,5 @@ ol {
 .back-link {
   display: flex;
   margin: 10px 50px;
+  max-width: 100%;
 }
