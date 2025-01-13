@@ -1,6 +1,4 @@
 import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-import '../css/1-gallery.css';
 
 const images = [
   {
@@ -91,67 +89,19 @@ const elementsArray = images.map(element => {
 galleryList.append(...elementsArray);
 
 // А тут взагалі морок :-))
-let gallery = new SimpleLightbox('.gallery a');
-gallery.on('show.simplelightbox', function () {
-  let attempts = 0;
-  const maxAttempts = 20;
-  const interval = 10;
-
-  const checkOverlay = setInterval(() => {
-    let overlay = document.querySelector('.sl-overlay');
-    attempts++;
-
-    if (overlay) {
-      overlay.classList.add('modal-overlay');
-      clearInterval(checkOverlay);
-    } else if (attempts >= maxAttempts) {
-      console.log('Оверлей не знайдено!');
-      clearInterval(checkOverlay);
-    }
-
-    const currentImg = gallery.currentImage;
-
-    if (currentImg) {
-      let modalContent = document.querySelector('.sl-image');
-      if (modalContent) {
-        const paragraph = document.createElement('p');
-        paragraph.classList.add('modal-header');
-        paragraph.textContent =
-          gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
-        modalContent.appendChild(paragraph);
-        const checkImgOpasity = setInterval(() => {
-          if (currentImg.style.opacity === '1') {
-            clearInterval(checkImgOpasity);
-            setTimeout(() => {
-              paragraph.style.opacity = 1;
-            }, 250);
-          }
-        }, 10);
-      }
-    }
-  }, interval);
+let gallery = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionPosition: 'bottom',
 });
 
-gallery.on('changed.simplelightbox', function () {
-  const imgFrame = document.querySelector('.sl-image');
-  const currentImg = gallery.currentImage;
-  if (currentImg) {
-    const paragraph = document.querySelector('.modal-header');
-    paragraph.style.opacity = 0;
-
-    paragraph.textContent =
-      gallery.elements[gallery.currentImageIndex].childNodes[0].alt;
-    const checkImgOpasity = setInterval(() => {
-      if (imgFrame && imgFrame.style.opacity === '1') {
-        clearInterval(checkImgOpasity);
-        setTimeout(() => {
-          paragraph.style.opacity = 1;
-        }, 250);
-      }
-    }, 10);
-  }
-});
+gallery.on('show.simplelightbox', function () {});
 
 gallery.on('error.simplelightbox', function (e) {
   console.log(e);
 });
+
+// paragraph.textContent =
+//   gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
