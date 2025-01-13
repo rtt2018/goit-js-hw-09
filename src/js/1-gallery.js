@@ -88,7 +88,6 @@ const elementsArray = images.map(element => {
 
 galleryList.append(...elementsArray);
 
-// А тут взагалі морок :-))
 let gallery = new SimpleLightbox('.gallery a', {
   captions: true,
   captionType: 'attr',
@@ -102,6 +101,3 @@ gallery.on('show.simplelightbox', function () {});
 gallery.on('error.simplelightbox', function (e) {
   console.log(e);
 });
-
-// paragraph.textContent =
-//   gallery.elements[gallery.currentImageIndex].childNodes[0].alt; // Спробуй, вгадай, що це :))))
