@@ -24,7 +24,7 @@ function saveAndrestoreData(event) {
 
 // --------------------Валідація мейлу-------------------------------
 function mailValidation(eventValidation) {
-  if (emailRegex.test(eventValidation.target.value)) {
+  if (emailRegex.test(eventValidation.target.value.trim())) {
     eventValidation.target.setCustomValidity('');
   } else {
     eventValidation.target.setCustomValidity(
@@ -63,7 +63,7 @@ function formSubmit(event) {
     return;
   }
 
-  if (emailRegex.test(event.target.elements.email.value)) {
+  if (emailRegex.test(event.target.elements.email.value.trim())) {
     event.target.elements.email.setCustomValidity('');
   } else {
     event.target.elements.email.setCustomValidity(
