@@ -68,7 +68,7 @@ const images = [
 
 const galleryList = document.querySelector('.gallery');
 
-// Тут нижче не розберешся :))))))
+// Тут нижче не розберешся :)))))) Дестркуктуризація? Не чув...
 const elementsArray = images.map(element => {
   const addListItem = document.createElement('li');
   addListItem.classList.add('gallery-item');
